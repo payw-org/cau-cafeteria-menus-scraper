@@ -24,8 +24,15 @@ const account = require('./account')
   )
 
   await page.click('.btn-login')
+  for(var i = 0; i < 2;i++){
+
   await page.waitForSelector('#P005 .nb-p-04-list-02 .nb-font-13')
   // await page.screenshot({ path: 'output/screenshot.png' })
+
+  let element = await page.$('.nb-p-time-select-current')
+  let text = await page.evaluate(element => element.textContent, element)
+  console.log(text)
+
   await page.click('.nb-p-04-list :nth-child(1) :nth-child(1)') 
   await page.waitFor(500)
   let info = await page.evaluate(() => {
@@ -188,5 +195,9 @@ const account = require('./account')
   console.log(JSON.stringify(lunch, null, 2))
   console.log("-----------------------------------------------------------------")
   console.log(JSON.stringify(dinner, null, 2))
+  console.log("-----------------------------------------------------------------")
+
+  await page.click('#P005 .nb-p-time-select .nb-p-time-select-next')
+}
   await browser.close()
 })()
