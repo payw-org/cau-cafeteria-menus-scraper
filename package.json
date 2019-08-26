@@ -1,12 +1,15 @@
 {
-  "name": "cau-food-scraper",
-  "version": "1.0.0-alpha.1",
-  "description": "중앙대학교 포탈에서 학식 정보를 가져옵니다.",
-  "main": "index.js",
+  "name": "@payw/cau-food-scraper",
+  "version": "1.0.0-beta.3",
+  "description": "",
   "repository": "https://github.com/paywteam/cau-food-scraper.git",
   "author": "PAYW",
   "license": "MIT",
   "dependencies": {
+    "dayjs": "^1.8.15",
     "puppeteer": "^1.18.1"
+  },
+  "scripts": {
+    "test": "node test/test.js"
   }
 }
