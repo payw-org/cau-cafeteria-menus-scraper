@@ -29,17 +29,17 @@ CAUFoodScraper().then(data => {
 ```js
 [
   {
-    "date": "YYYY-MM-DD",
-    "today": {
-      "breakfast": [
+    date: "YYYY-MM-DD",
+    today: {
+      breakfast: [
         {
-          "restaurantName": "restaurant name",
-          "meals": [
+          restaurantName: "restaurant name",
+          meals: [
             {
-              "time": "HH:mm~HH:mm",
-              "title": "meal title",
-              "price": "$,$$$원",
-              "menus": [
+              time: "HH:mm~HH:mm",
+              title: "meal title",
+              price: "$,$$$원",
+              menus: [
                 "menu1",
                 "menu2",
                 ...
@@ -49,10 +49,10 @@ CAUFoodScraper().then(data => {
           ]
         }
       ],
-      "lunch": [
+      lunch: [
         // Same
       ],
-      "dinner": [
+      dinner: [
         // Same
       ]
     }
