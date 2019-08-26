@@ -26,7 +26,7 @@ CAUFoodScraper().then(data => {
 
 ## Data Structure
 
-```json
+```js
 [
   {
     "date": "YYYY-MM-DD",
