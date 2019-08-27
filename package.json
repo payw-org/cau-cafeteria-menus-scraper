@@ -1,6 +1,6 @@
 {
   "name": "@payw/cau-food-scraper",
-  "version": "1.1.1",
+  "version": "1.1.3",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "description": "",
@@ -8,6 +8,7 @@
   "author": "PAYW",
   "license": "MIT",
   "dependencies": {
+    "@babel/runtime": "^7.5.5",
     "dayjs": "^1.8.15",
     "puppeteer": "^1.18.1"
   },
@@ -21,7 +22,6 @@
     "@babel/plugin-transform-async-to-generator": "^7.5.0",
     "@babel/plugin-transform-runtime": "^7.5.5",
     "@babel/preset-env": "^7.5.5",
-    "@babel/runtime": "^7.5.5",
     "@types/node": "^12.7.2",
     "babel-loader": "^8.0.6",
     "terser-webpack-plugin": "^1.4.1",
