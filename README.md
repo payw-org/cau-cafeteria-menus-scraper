@@ -1,6 +1,6 @@
 # CAU Food Scraper
 
-It scrapes food data for 5 days(starting today) from Chungang University's restaurants'.
+It scrapes food data for 5 days(default, starting today) from Chungang University's restaurants'.
 
 ```zsh
 % yarn add @payw/cau-food-scraper
@@ -10,21 +10,23 @@ It scrapes food data for 5 days(starting today) from Chungang University's resta
 
 ```js
 // Node.js
-const CAUFoodScraper = require('@payw/cau-food-scraper')
+const foodScrape = require('@payw/cau-food-scraper').default
 
-CAUFoodScraper().then(data => {
-  // Do something
-})
+// webpack
+import foodScrape from '@payw/cau-food-scraper'
 
-// Webpack
-import CAUFoodScraper from '@payw/cau-food-scraper'
-
-CAUFoodScraper().then(data => {
+foodScrape({
+  id: 'portal-id',
+  pw: 'portal-pw',
+  days: 1 // optional (default: 5)
+}).then(data => {
   // Do something
 })
 ```
 
 ## Data Structure
+
+It supports type definition. Below is overall data schema of return value.
 
 ```js
 [

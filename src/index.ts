@@ -1,8 +1,41 @@
 const puppeteer = require('puppeteer')
-const account = require('./account')
+// const account = require('./account')
 const dayjs = require('dayjs')
 
-module.exports = async function() {
+interface Meal {
+  time: string
+  title: string
+  price: string
+  menus: string[]
+}
+
+interface Food {
+  restaurantName: string
+  meals: Meal[]
+}
+
+interface Today {
+  breakfast: Food[]
+  lunch: Food[]
+  dinner: Food[]
+}
+
+interface Day {
+  date: string
+  today: Today
+}
+
+type Data = Day[]
+
+export default async function cauFoodScraper({
+  id,
+  pw,
+  days = 5
+}: {
+  id: string
+  pw: string
+  days?: number
+}): Promise<Data> {
   const browser = await puppeteer.launch()
   const page = await browser.newPage()
 
@@ -16,12 +49,12 @@ module.exports = async function() {
   await page.waitForSelector('#txtUserID')
 
   await page.evaluate(
-    (id, pw) => {
-      document.querySelector('#txtUserID').value = id
-      document.querySelector('#txtPwd').value = pw
+    (evId, evPw) => {
+      ;(document.querySelector('#txtUserID') as HTMLInputElement).value = evId
+      ;(document.querySelector('#txtPwd') as HTMLInputElement).value = evPw
     },
-    account.id,
-    account.pw
+    id,
+    pw
   )
 
   var nextDate = new Date()
@@ -33,12 +66,20 @@ module.exports = async function() {
   let awaitTime = 2000
 
   // Scrape 5 days including today
-  for (var i = 0; i < 5; i++) {
+  for (var i = 0; i < days; i++) {
     let mealsInDay = {
       date: dayjs(nextDate).format('YYYY-MM-DD'),
       today: {}
     }
-    await page.waitForSelector('#P005 .nb-p-04-list-02 .nb-font-13')
+
+    try {
+      await page.waitForSelector('#P005 .nb-p-04-list-02 .nb-font-13', {
+        timeout: 6000
+      })
+    } catch (error) {
+      return Promise.reject(new Error('Login failed'))
+    }
+
     // await page.screenshot({ path: 'output/screenshot.png' })
 
     await page.click('.nb-p-04-list :nth-child(1) :nth-child(1)')
@@ -62,7 +103,7 @@ module.exports = async function() {
             let food = {
               time: '',
               title: '',
-              price: 0,
+              price: '0',
               menus: []
             }
 
@@ -76,9 +117,9 @@ module.exports = async function() {
             )
             if (infoE.length === 0) {
               infoE = foodElm.querySelectorAll('.nb-p-04-detail .nb-p-04-03')
-              food.menus = infoE[0].textContent
+              food.menus.push(infoE[0].textContent)
             } else {
-              infoE = foodElm
+              foodElm
                 .querySelectorAll('.nb-p-04-detail .nb-p-04-03 p')
                 .forEach(menuItem => {
                   food.menus.push(menuItem.textContent)
@@ -115,7 +156,7 @@ module.exports = async function() {
             let food = {
               time: '',
               title: '',
-              price: 0,
+              price: '0',
               menus: []
             }
 
@@ -129,9 +170,9 @@ module.exports = async function() {
             )
             if (infoE.length === 0) {
               infoE = foodElm.querySelectorAll('.nb-p-04-detail .nb-p-04-03')
-              food.menus = infoE[0].textContent
+              food.menus.push(infoE[0].textContent)
             } else {
-              infoE = foodElm
+              foodElm
                 .querySelectorAll('.nb-p-04-detail .nb-p-04-03 p')
                 .forEach(menuItem => {
                   food.menus.push(menuItem.textContent)
@@ -168,7 +209,7 @@ module.exports = async function() {
             let food = {
               time: '',
               title: '',
-              price: 0,
+              price: '0',
               menus: []
             }
 
@@ -182,9 +223,9 @@ module.exports = async function() {
             )
             if (infoE.length === 0) {
               infoE = foodElm.querySelectorAll('.nb-p-04-detail .nb-p-04-03')
-              food.menus = infoE[0].textContent
+              food.menus.push(infoE[0].textContent)
             } else {
-              infoE = foodElm
+              foodElm
                 .querySelectorAll('.nb-p-04-detail .nb-p-04-03 p')
                 .forEach(menuItem => {
                   food.menus.push(menuItem.textContent)
@@ -200,15 +241,9 @@ module.exports = async function() {
       return dinner
     })
 
-    // console.log(JSON.stringify(breakfast, null, 2))
     mealsInDay.today['breakfast'] = breakfast
-    // console.log('-----------------------------')
-    // console.log(JSON.stringify(lunch, null, 2))
     mealsInDay.today['lunch'] = lunch
-    // console.log('-----------------------------')
-    // console.log(JSON.stringify(dinner, null, 2))
     mealsInDay.today['dinner'] = dinner
-    // console.log('-----------------------------')
 
     data.push(mealsInDay)
 
