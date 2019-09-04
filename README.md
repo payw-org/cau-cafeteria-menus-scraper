@@ -1,11 +1,9 @@
 # CAU Food Scraper
 
-It scrapes food data for 5 days(default, starting today) from Chungang University's restaurants'.
+It scrapes food data for 5 days(default, starting today) from Chungang University's restaurants.
 
 ```zsh
-% yarn add @payw/cau-food-scraper
-# OR
-% npm install @payw/cau-food-scraper
+npm install @payw/cau-food-scraper
 ```
 
 ```js
@@ -32,32 +30,30 @@ It supports type definition. Below is overall data schema of return value.
 [
   {
     date: "YYYY-MM-DD",
-    today: {
-      breakfast: [
-        {
-          restaurantName: "restaurant name",
-          meals: [
-            {
-              time: "HH:mm~HH:mm",
-              title: "meal title",
-              price: "$,$$$원",
-              menus: [
-                "menu1",
-                "menu2",
-                ...
-              ]
-            }
-            ...
-          ]
-        }
-      ],
-      lunch: [
-        // Same
-      ],
-      dinner: [
-        // Same
-      ]
-    }
+    breakfast: [
+      {
+        name: "restaurant name",
+        meals: [
+          {
+            time: "HH:mm~HH:mm",
+            title: "meal title",
+            price: "$,$$$원",
+            menus: [
+              "menu1",
+              "menu2",
+              ...
+            ]
+          }
+          ...
+        ]
+      }
+    ],
+    lunch: [
+      // Same
+    ],
+    supper: [
+      // Same
+    ]
   }
   ...
 ]

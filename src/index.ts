@@ -1,5 +1,4 @@
 const puppeteer = require('puppeteer')
-// const account = require('./account')
 const dayjs = require('dayjs')
 
 interface Meal {
@@ -10,19 +9,15 @@ interface Meal {
 }
 
 interface Food {
-  restaurantName: string
+  name: string
   meals: Meal[]
-}
-
-interface Today {
-  breakfast: Food[]
-  lunch: Food[]
-  dinner: Food[]
 }
 
 interface Day {
   date: string
-  today: Today
+  breakfast: Food[]
+  lunch: Food[]
+  supper: Food[]
 }
 
 type Data = Day[]
@@ -62,19 +57,26 @@ export default async function cauFoodScraper({
   // Click login button
   await page.click('.btn-login')
 
+  // Delay method
+  const delay = ms => {
+    new Promise(resolve => setTimeout(resolve, ms))
+  }
+
   let data = []
   let awaitTime = 2000
 
   // Scrape 5 days including today
   for (var i = 0; i < days; i++) {
-    let mealsInDay = {
+    let mealsInDay: Day = {
       date: dayjs(nextDate).format('YYYY-MM-DD'),
-      today: {}
+      breakfast: [],
+      lunch: [],
+      supper: []
     }
 
     try {
       await page.waitForSelector('#P005 .nb-p-04-list-02 .nb-font-13', {
-        timeout: 6000
+        timeout: 10000
       })
     } catch (error) {
       return Promise.reject(new Error('Login failed'))
@@ -90,12 +92,12 @@ export default async function cauFoodScraper({
         .querySelectorAll('#P005 .nb-p-04-list-02')
         .forEach(restaurantElm => {
           let restaurantInfo = {
-            restaurantName: '',
+            name: '',
             meals: []
           }
 
           // get restaurant name
-          restaurantInfo.restaurantName = restaurantElm
+          restaurantInfo.name = restaurantElm
             .querySelector('.nb-font-13')
             .textContent.trim()
 
@@ -143,12 +145,12 @@ export default async function cauFoodScraper({
         .querySelectorAll('#P005 .nb-p-04-list-02')
         .forEach(restaurantElm => {
           let restaurantInfo = {
-            restaurantName: '',
+            name: '',
             meals: []
           }
 
           // get restaurant name
-          restaurantInfo.restaurantName = restaurantElm
+          restaurantInfo.name = restaurantElm
             .querySelector('.nb-font-13')
             .textContent.trim()
 
@@ -190,18 +192,18 @@ export default async function cauFoodScraper({
 
     await page.click('.nb-p-04-list :nth-child(3) :nth-child(1)')
     await page.waitFor(awaitTime)
-    let dinner = await page.evaluate(() => {
-      let dinner = []
+    let supper = await page.evaluate(() => {
+      let supper = []
       document
         .querySelectorAll('#P005 .nb-p-04-list-02')
         .forEach(restaurantElm => {
           let restaurantInfo = {
-            restaurantName: '',
+            name: '',
             meals: []
           }
 
           // get restaurant name
-          restaurantInfo.restaurantName = restaurantElm
+          restaurantInfo.name = restaurantElm
             .querySelector('.nb-font-13')
             .textContent.trim()
 
@@ -235,15 +237,15 @@ export default async function cauFoodScraper({
             restaurantInfo.meals.push(food)
           })
 
-          dinner.push(restaurantInfo)
+          supper.push(restaurantInfo)
         })
 
-      return dinner
+      return supper
     })
 
-    mealsInDay.today['breakfast'] = breakfast
-    mealsInDay.today['lunch'] = lunch
-    mealsInDay.today['dinner'] = dinner
+    mealsInDay.breakfast = breakfast
+    mealsInDay.lunch = lunch
+    mealsInDay.supper = supper
 
     data.push(mealsInDay)
 

@@ -5,6 +5,10 @@ cauFoodScraper({
   id: account.id,
   pw: account.pw,
   days: 1
-}).then(data => {
-  console.log(JSON.stringify(data, null, 2))
 })
+  .then(data => {
+    console.log(JSON.stringify(data, null, 2))
+  })
+  .catch(e => {
+    console.log(e)
+  })
