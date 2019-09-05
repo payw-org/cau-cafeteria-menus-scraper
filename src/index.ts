@@ -14,7 +14,7 @@ export interface Food {
 }
 
 export interface Day {
-  date: Date
+  date: string
   breakfast: Food[]
   lunch: Food[]
   supper: Food[]
