@@ -14,7 +14,7 @@ export interface Food {
 }
 
 export interface Day {
-  date: string
+  date: Date
   breakfast: Food[]
   lunch: Food[]
   supper: Food[]
@@ -68,7 +68,7 @@ export default async function cauFoodScraper({
   // Scrape 5 days including today
   for (var i = 0; i < days; i++) {
     let mealsInDay: Day = {
-      date: dayjs(nextDate).format('YYYY-MM-DD'),
+      date: nextDate,
       breakfast: [],
       lunch: [],
       supper: []

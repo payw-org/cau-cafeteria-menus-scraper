@@ -29,7 +29,7 @@ It supports type definition. Below is overall data schema of return value.
 ```js
 [
   {
-    date: "YYYY-MM-DD",
+    date: Date, // Original JS Date object
     breakfast: [
       {
         name: "restaurant name",
@@ -37,7 +37,7 @@ It supports type definition. Below is overall data schema of return value.
           {
             time: "HH:mm~HH:mm",
             title: "meal title",
-            price: "$,$$$원",
+            price: "$,$$$ 원",
             menus: [
               "menu1",
               "menu2",
