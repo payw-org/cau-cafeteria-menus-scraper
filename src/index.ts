@@ -1,26 +1,26 @@
 const puppeteer = require('puppeteer')
 const dayjs = require('dayjs')
 
-interface Meal {
+export interface Meal {
   time: string
   title: string
   price: string
   menus: string[]
 }
 
-interface Food {
+export interface Food {
   name: string
   meals: Meal[]
 }
 
-interface Day {
+export interface Day {
   date: string
   breakfast: Food[]
   lunch: Food[]
   supper: Food[]
 }
 
-type Data = Day[]
+export type Data = Day[]
 
 export default async function cauFoodScraper({
   id,
