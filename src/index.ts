@@ -68,7 +68,7 @@ export default async function cauFoodScraper({
   // Scrape 5 days including today
   for (var i = 0; i < days; i++) {
     let mealsInDay: Day = {
-      date: nextDate,
+      date: dayjs(nextDate).format('YYYY-MM-DD'),
       breakfast: [],
       lunch: [],
       supper: []
