@@ -22,39 +22,42 @@ foodScrape({
 })
 ```
 
-## Data Structure
+## Return Data
 
-It supports type definition. Below is overall data schema of return value.
+Below is overall data schema of an example return value. Check out the type definitions for more information.
 
 ```js
-[
-  {
-    date: Date, // Original JS Date object
-    breakfast: [
-      {
-        name: "restaurant name",
-        meals: [
-          {
-            time: "HH:mm~HH:mm",
-            title: "meal title",
-            price: "$,$$$ 원",
-            menus: [
-              "menu1",
-              "menu2",
-              ...
-            ]
-          }
-          ...
-        ]
-      }
-    ],
-    lunch: [
-      // Same
-    ],
-    supper: [
-      // Same
-    ]
-  }
-  ...
-]
+{
+  campus: 'seoul'
+  days: [
+    {
+      date: Date, // Original JS Date object
+      breakfast: [
+        {
+          name: "restaurant name",
+          meals: [
+            {
+              time: "HH:mm~HH:mm",
+              title: "meal title",
+              price: "$,$$$ 원",
+              menus: [
+                "menu1",
+                "menu2",
+                ...
+              ]
+            }
+            ...
+          ]
+        }
+      ],
+      lunch: [
+        // Same
+      ],
+      supper: [
+        // Same
+      ]
+    }
+    ...
+  ]
+}
 ```

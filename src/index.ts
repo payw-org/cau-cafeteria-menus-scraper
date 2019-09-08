@@ -20,7 +20,10 @@ export interface Day {
   supper: Food[]
 }
 
-export type Data = Day[]
+export interface ScrapedData {
+  campus: 'seoul' | 'anseong'
+  days: Day[]
+}
 
 export default async function cauFoodScraper({
   id,
@@ -30,7 +33,7 @@ export default async function cauFoodScraper({
   id: string
   pw: string
   days?: number
-}): Promise<Data> {
+}): Promise<ScrapedData> {
   const browser = await puppeteer.launch()
   const page = await browser.newPage()
 
@@ -62,7 +65,10 @@ export default async function cauFoodScraper({
     new Promise(resolve => setTimeout(resolve, ms))
   }
 
-  let data = []
+  let scrapedData: ScrapedData = {
+    campus: 'seoul',
+    days: []
+  }
   let awaitTime = 2000
 
   // Scrape 5 days including today
@@ -247,7 +253,7 @@ export default async function cauFoodScraper({
     mealsInDay.lunch = lunch
     mealsInDay.supper = supper
 
-    data.push(mealsInDay)
+    scrapedData.days.push(mealsInDay)
 
     nextDate.setDate(nextDate.getDate() + 1)
     await page.click('#P005 .nb-p-time-select .nb-p-time-select-next')
@@ -255,5 +261,5 @@ export default async function cauFoodScraper({
 
   await browser.close()
 
-  return data
+  return scrapedData
 }
