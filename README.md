@@ -31,7 +31,7 @@ Below is overall data schema of an example return value. Check out the type defi
   campus: 'seoul'
   days: [
     {
-      date: Date, // Original JS Date object
+      date: 'YYYY-MM-DD',
       breakfast: [
         {
           name: "restaurant name",
