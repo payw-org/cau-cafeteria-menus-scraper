@@ -1,4 +1,4 @@
-# CAU Food Scraper(CAUFS)
+# CAU Food Scraper (CAUFS)
 
 A CAU restaurant menu scraper for Node.js
 
@@ -22,14 +22,15 @@ npm install @payw/cau-food-scraper
 yarn add @payw/cau-food-scraper
 ```
 
+### Usage
+
 ```js
 // Node.js
-const foodScrape = require('@payw/cau-food-scraper').default
-
+const { CAUFS } = require('@payw/cau-food-scraper')
 // webpack
-import foodScrape from '@payw/cau-food-scraper'
+// import { CAUFS } from '@payw/cau-food-scraper'
 
-foodScrape({
+CAUFS({
   id: 'portalId',
   pw: 'portalPw',
   days: 1 // optional (default: 5)
