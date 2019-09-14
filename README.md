@@ -1,9 +1,25 @@
-# CAU Food Scraper
+# CAU Food Scraper(CAUFS)
 
-It scrapes food data for 5 days(default, starting today) from Chungang University's restaurants.
+A CAU restaurant menu scraper for Node.js
+
+---
+
+> **_NOTE:_** You should follow the migration guide in favor of v2 release.
+
+---
+
+### What's new in v2
+
+- 🎯 Promise-based precise data scraping without any wasting of time
+- 🚀 Boost up to 5x faster
+- 🗑 Reduce dependencies which are totally unnecessary
+
+### Installation
 
 ```zsh
 npm install @payw/cau-food-scraper
+# OR
+yarn add @payw/cau-food-scraper
 ```
 
 ```js
@@ -14,50 +30,50 @@ const foodScrape = require('@payw/cau-food-scraper').default
 import foodScrape from '@payw/cau-food-scraper'
 
 foodScrape({
-  id: 'portal-id',
-  pw: 'portal-pw',
+  id: 'portalId',
+  pw: 'portalPw',
   days: 1 // optional (default: 5)
 }).then(data => {
   // Do something
 })
 ```
 
-## Return Data
+### Migration from v1 to v2
 
-Below is overall data schema of an example return value. Check out the type definitions for more information.
+You should import the library differently.
 
 ```js
-{
-  campus: 'seoul'
-  days: [
-    {
-      date: 'YYYY-MM-DD',
-      breakfast: [
-        {
-          name: "restaurant name",
-          meals: [
-            {
-              time: "HH:mm~HH:mm",
-              title: "meal title",
-              price: "$,$$$ 원",
-              menus: [
-                "menu1",
-                "menu2",
-                ...
-              ]
-            }
-            ...
-          ]
-        }
-      ],
-      lunch: [
-        // Same
-      ],
-      supper: [
-        // Same
-      ]
-    }
-    ...
-  ]
+/* v1 */
+// Node.js
+const foodScrape = require('@payw/cau-food-scraper').default
+// webpack
+import foodScrape from '@payw/cau-food-scraper'
+
+/* v2 */
+// Node.js
+const { CAUFS } = require('@payw/cau-food-scraper')
+// webpack
+import { CAUFS } from '@payw/cau-food-scraper'
+```
+
+Returning data type of `Day` and its children types had been slightly changed. The package includes a type definition with more detailed information.
+
+```ts
+/* v1 */
+type Day = {
+  date: string
+  breakfast: Food[]
+  lunch: Food[]
+  supper: Food[]
+}
+
+/* v2 */
+type Day = {
+  date: string
+  timeGroup: {
+    breakfast: Restaurant[]
+    lunch: Restaurant[]
+    supper: Restaurant[]
+  }
 }
 ```
