@@ -9,6 +9,7 @@
   "license": "MIT",
   "dependencies": {
     "dayjs": "^1.8.15",
+    "pending-xhr-puppeteer": "^2.1.0",
     "puppeteer": "^1.18.1"
   },
   "scripts": {
