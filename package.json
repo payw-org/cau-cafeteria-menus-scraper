@@ -8,7 +8,6 @@
   "author": "PAYW",
   "license": "MIT",
   "dependencies": {
-    "@babel/runtime": "^7.5.5",
     "dayjs": "^1.8.15",
     "puppeteer": "^1.18.1"
   },
@@ -18,19 +17,9 @@
     "test": "node test.js"
   },
   "devDependencies": {
-    "@babel/core": "^7.5.5",
-    "@babel/plugin-transform-async-to-generator": "^7.5.0",
-    "@babel/plugin-transform-runtime": "^7.5.5",
-    "@babel/preset-env": "^7.5.5",
-    "@types/node": "^12.7.2",
-    "babel-loader": "^8.0.6",
-    "terser-webpack-plugin": "^1.4.1",
-    "ts-loader": "^6.0.4",
-    "typescript": "^3.5.3",
-    "webpack": "^4.39.2",
-    "webpack-cli": "^3.3.7",
-    "webpack-merge": "^4.2.1",
-    "webpack-node-externals": "^1.7.2"
+    "@types/node": "^12.7.5",
+    "@types/puppeteer": "^1.19.1",
+    "terser": "^4.3.1"
   },
   "files": [
     "dist/"
