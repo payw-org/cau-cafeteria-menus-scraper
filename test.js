@@ -1,10 +1,9 @@
 const account = require('./account')
-const cauFoodScraper = require('./dist/index').default
+const { CAUFS } = require('./build/index')
 
-cauFoodScraper({
+CAUFS({
   id: account.id,
-  pw: account.pw,
-  days: 1
+  pw: account.pw
 })
   .then(data => {
     console.log(JSON.stringify(data, null, 2))
