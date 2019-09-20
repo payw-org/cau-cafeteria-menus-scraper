@@ -83,11 +83,9 @@ async function cauFoodScraper(config) {
 
     const dayData = {
       date: dayjs(dateString).format(dateFormat),
-      timeGroup: {
-        breakfast: [],
-        lunch: [],
-        supper: []
-      }
+      breakfast: [],
+      lunch: [],
+      supper: []
     }
 
     for (let i = 0; i < 3; i += 1) {
@@ -162,11 +160,11 @@ async function cauFoodScraper(config) {
         }
 
         if (i === 0) {
-          dayData.timeGroup.breakfast.push(restaurantData)
+          dayData.breakfast.push(restaurantData)
         } else if (i === 1) {
-          dayData.timeGroup.lunch.push(restaurantData)
+          dayData.lunch.push(restaurantData)
         } else if (i === 2) {
-          dayData.timeGroup.supper.push(restaurantData)
+          dayData.supper.push(restaurantData)
         }
       }
     }

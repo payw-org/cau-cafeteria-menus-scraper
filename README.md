@@ -57,6 +57,10 @@ const { CAUFS } = require('@payw/cau-food-scraper')
 import { CAUFS } from '@payw/cau-food-scraper'
 ```
 
+---
+
+> Currently, the chage below is deprecated and will be reverted back on the next major release.
+
 Returning data type of `Day` and its children types had been slightly changed. The package includes a type definition with more detailed information.
 
 ```ts

@@ -12,11 +12,9 @@ export type Restaurant = {
 
 export type Day = {
   date: string
-  timeGroup: {
-    breakfast: Restaurant[]
-    lunch: Restaurant[]
-    supper: Restaurant[]
-  }
+  breakfast: Restaurant[]
+  lunch: Restaurant[]
+  supper: Restaurant[]
 }
 
 export type ScrapedData = {
