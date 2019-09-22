@@ -1,9 +1,10 @@
 const account = require('./account')
-const { CAUFS } = require('./build/index')
+const { CAUFS } = require('./dist/index')
 
 CAUFS({
   id: account.id,
-  pw: account.pw
+  pw: account.pw,
+  days: 2
 })
   .then(data => {
     console.log(JSON.stringify(data, null, 2))
