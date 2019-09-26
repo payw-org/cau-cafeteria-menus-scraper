@@ -10,7 +10,8 @@ const { PendingXHR } = require('pending-xhr-puppeteer')
  */
 async function cauFoodScraper(config) {
   const browser = await puppeteer.launch({
-    headless: true
+    headless: true,
+    args: ['--no-sandbox']
   })
   const page = await browser.newPage()
   const pendingXHR = new PendingXHR(page)
