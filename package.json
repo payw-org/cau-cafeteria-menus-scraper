@@ -1,10 +1,9 @@
 {
-  "name": "@payw/cau-food-scraper",
-  "version": "2.0.6",
+  "name": "@payw/cau-cafeteria-menus-scraper",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "description": "",
-  "repository": "https://github.com/paywteam/cau-food-scraper.git",
+  "repository": "https://github.com/paywteam/cau-cafeteria-menus-scraper.git",
   "author": "PAYW",
   "license": "MIT",
   "dependencies": {

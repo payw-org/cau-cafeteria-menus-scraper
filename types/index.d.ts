@@ -28,4 +28,4 @@ export type Config = {
   days: number
 }
 
-export function CAUFS(config: Config): Promise<ScrapedData>
+export function CCMS(config: Config): Promise<ScrapedData>

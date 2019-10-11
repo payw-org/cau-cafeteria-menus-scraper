@@ -1,7 +1,7 @@
 const account = require('./account')
-const { CAUFS } = require('./dist/index')
+const { CCMS } = require('./dist/index')
 
-CAUFS({
+CCMS({
   id: account.id,
   pw: account.pw,
   days: 2

@@ -8,7 +8,7 @@ const { PendingXHR } = require('pending-xhr-puppeteer')
  * @param {string} config.pw
  * @param {number} config.days
  */
-async function cauFoodScraper(config) {
+async function cauCafeteriaMenusScraper(config) {
   const browser = await puppeteer.launch({
     headless: true,
     args: ['--no-sandbox']
@@ -184,5 +184,5 @@ async function cauFoodScraper(config) {
 }
 
 module.exports = {
-  CAUFS: cauFoodScraper
+  CCMS: cauCafeteriaMenusScraper
 }
