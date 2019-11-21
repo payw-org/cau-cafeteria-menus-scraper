@@ -13,7 +13,8 @@
     "puppeteer": "^1.20.0"
   },
   "scripts": {
-    "build": "terser src/index.js -o dist/index.js",
+    "copy-types": "node ./src/copy-types.js",
+    "build": "terser src/index.js -o dist/index.js && yarn copy-types",
     "test": "node test.js"
   },
   "devDependencies": {
