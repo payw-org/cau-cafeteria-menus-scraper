@@ -1,0 +1,8 @@
+{
+  "name": "@payw/cau-cafeteria-menus-scraper-types",
+  "version": "2.1.3",
+  "description": "Type definitions for CAU Cafeteria Menus Scraper by PAYW",
+  "repository": "https://github.com/paywteam/cau-cafeteria-menus-scraper.git",
+  "author": "PAYW",
+  "license": "MIT"
+}
