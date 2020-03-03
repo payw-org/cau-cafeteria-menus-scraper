@@ -1,4 +1,4 @@
-# CAU Cafeteria Menus Scraper (CCMS)
+# CAU Cafeteria Menus Scraper (CCMS) ![npm](https://img.shields.io/npm/v/@payw/cau-cafeteria-menus-scraper)
 
 A CAU cafeteria menus scraper for Node.js
 
