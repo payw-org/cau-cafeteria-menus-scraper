@@ -30,7 +30,7 @@ CCMS({
 
 ### TypeScript Support
 
-Basically the package is written in TypeScript and contains the type definitions. But you can also install only the types.
+The package contains its type definitions. But you can also install types only.
 
 ```bash
 npm install --save-dev @payw/cau-cafeteria-menus-scraper-types
@@ -40,7 +40,7 @@ npm install --save-dev @payw/cau-cafeteria-menus-scraper-types
 
 ### `v2.0.x` → `v2.1.x` Migration Guide
 
-We renamed the package name to 'cau-cafeteria-menus-scraper'. Also the key name of object destructuring has been changed.
+We renamed the package to 'cau-cafeteria-menus-scraper'. Also the key of the return object has been changed.
 
 ```js
 /* v2.0.x */
