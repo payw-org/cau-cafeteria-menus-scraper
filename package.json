@@ -1,6 +1,6 @@
 {
   "name": "@payw/cau-cafeteria-menus-scraper",
-  "version": "2.1.4",
+  "version": "2.1.5",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "description": "",
@@ -8,9 +8,7 @@
   "author": "PAYW",
   "license": "MIT",
   "dependencies": {
-    "dayjs": "^1.8.26",
-    "pending-xhr-puppeteer": "^2.1.0",
-    "puppeteer": "^3.0.2"
+    "dayjs": "^1.8.26"
   },
   "scripts": {
     "validate-output-directory": "node src/validate-output-directory",
@@ -22,6 +20,10 @@
     "@types/node": "^13.13.4",
     "@types/puppeteer": "^2.0.1",
     "terser": "^4.6.13"
+  },
+  "peerDependencies": {
+    "pending-xhr-puppeteer": "2.1.x",
+    "puppeteer": "3.x"
   },
   "files": [
     "dist/"
