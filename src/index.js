@@ -72,6 +72,8 @@ async function cauCafeteriaMenusScraper(config) {
     await page.waitForSelector('#P005')
     await pendingXHR.waitForAllXhrFinished()
   } catch (error) {
+    await page.close()
+    await browser.close()
     return Promise.reject(new Error('Login timeout'))
   }
 
@@ -176,6 +178,9 @@ async function cauCafeteriaMenusScraper(config) {
     await page.click(sel.nextDay)
     await pendingXHR.waitForAllXhrFinished()
   }
+
+  // Close the page
+  await page.close()
 
   // Close the browser
   await browser.close()
