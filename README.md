@@ -14,6 +14,12 @@ A CAU cafeteria menus scraper for Node.js
 npm install @payw/cau-cafeteria-menus-scraper
 ```
 
+**Peer Dependencies**
+
+```zsh
+npm i -D puppeteer pending-xhr-puppeteer
+```
+
 ## Usage
 
 ```js
