@@ -41,31 +41,31 @@ async function cauCafeteriaMenusScraper(config) {
     height: 667
   })
 
-  await page.goto('https://mportal.cau.ac.kr/common/auth/SSOlogin.do')
-
-  // Login
-  await page.waitForNavigation({
-    waitUntil: 'load'
-  })
-  await page.waitForSelector('#txtUserID')
-  await page.evaluate(
-    (evId, evPw) => {
-      document.querySelector('#txtUserID').value = evId
-      document.querySelector('#txtPwd').value = evPw
-    },
-    config.id,
-    config.pw
-  )
-  await page.click('.btn-login')
-
-  // Define data
-  let scrapedData = {
-    campus: 'seoul',
-    days: []
-  }
-
-  // Wait until food section appears
   try {
+    await page.goto('https://mportal.cau.ac.kr/common/auth/SSOlogin.do')
+
+    // Login
+    await page.waitForNavigation({
+      waitUntil: 'load'
+    })
+    await page.waitForSelector('#txtUserID')
+    await page.evaluate(
+      (evId, evPw) => {
+        document.querySelector('#txtUserID').value = evId
+        document.querySelector('#txtPwd').value = evPw
+      },
+      config.id,
+      config.pw
+    )
+    await page.click('.btn-login')
+
+    // Define data
+    let scrapedData = {
+      campus: 'seoul',
+      days: []
+    }
+
+    // Wait until food section appears
     await page.waitForNavigation({
       waitUntil: 'load'
     })
