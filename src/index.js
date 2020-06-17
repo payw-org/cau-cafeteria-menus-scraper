@@ -41,6 +41,12 @@ async function cauCafeteriaMenusScraper(config) {
     height: 667
   })
 
+  // Define data
+  let scrapedData = {
+    campus: 'seoul',
+    days: []
+  }
+
   try {
     await page.goto('https://mportal.cau.ac.kr/common/auth/SSOlogin.do')
 
@@ -58,12 +64,6 @@ async function cauCafeteriaMenusScraper(config) {
       config.pw
     )
     await page.click('.btn-login')
-
-    // Define data
-    let scrapedData = {
-      campus: 'seoul',
-      days: []
-    }
 
     // Wait until food section appears
     await page.waitForNavigation({
