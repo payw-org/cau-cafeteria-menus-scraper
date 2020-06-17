@@ -8,7 +8,7 @@
   "author": "PAYW",
   "license": "MIT",
   "dependencies": {
-    "dayjs": "^1.8.26"
+    "dayjs": "^1.8.28"
   },
   "scripts": {
     "validate-output-directory": "node src/validate-output-directory",
@@ -17,15 +17,15 @@
     "test": "node test.js"
   },
   "devDependencies": {
-    "@types/node": "^13.13.4",
-    "@types/puppeteer": "^2.0.1",
+    "@types/node": "^14.0.13",
+    "@types/puppeteer": "^3.0.0",
     "pending-xhr-puppeteer": "^2.1.0",
     "puppeteer": "^3.1.0",
-    "terser": "^4.6.13"
+    "terser": "^4.8.0"
   },
   "peerDependencies": {
-    "pending-xhr-puppeteer": "2.1.x",
-    "puppeteer": "3.x"
+    "pending-xhr-puppeteer": "2.x",
+    "puppeteer": "4.x"
   },
   "files": [
     "dist/"
