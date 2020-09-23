@@ -1,5 +1,4 @@
 const puppeteer = require('puppeteer')
-const dayjs = require('dayjs')
 const { PendingXHR } = require('pending-xhr-puppeteer')
 
 /**
@@ -15,7 +14,6 @@ async function cauCafeteriaMenusScraper(config) {
   })
   const page = await browser.newPage()
   const pendingXHR = new PendingXHR(page)
-  const dateFormat = 'YYYY-MM-DD'
   const sel = {
     timeGroup: [
       '#P005 .nb-p-tab-sections header ol li:nth-child(1)',
@@ -80,12 +78,14 @@ async function cauCafeteriaMenusScraper(config) {
   // Loop for the passed days count
   const days = config.days ? config.days : 5
   for (let i = 0; i < days; i += 1) {
+    await pendingXHR.waitForAllXhrFinished()
+
     const dateString = await page.$eval(sel.date, elm => {
       return elm.textContent.trim()
     })
 
     const dayData = {
-      date: dayjs(dateString).format(dateFormat),
+      date: dateString.replace(/\./g, '-'),
       breakfast: [],
       lunch: [],
       supper: []
